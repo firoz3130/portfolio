@@ -5,18 +5,98 @@
     <title>Firos K</title>
     <link href="https://fonts.googleapis.com/css2?family=Bellota&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet" type="text/css">
+    <style>
+        /* Add styles for balloons here */
+        .balloon {
+            position: absolute;
+            animation: float 5s infinite;
+            transform-origin: center bottom;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-30px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .birthday {
+            display: none;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+#birthday-wish span {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff0000;
+}
+        .section {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        .section h1 {
+            font-family: 'Bellota', cursive;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .section h1 span {
+            border-bottom: 5px solid #ff0000;
+        }
+
+        .section p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .section p.quote {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            font-size: 20px;
+}
+    </style>
 </head>
 
 <body>
+    <div class="birthday" id="birthday-wish" style="display: none;">
+        <h1><span>Happy Birthday!</span></h1>
+        <p>Wishing you a fantastic birthday filled with joy and happiness!</p>
+        <p>May your day be as special as you are!</p>
+    </div>
     <div id="header" class="section">
-       
+
         <img alt="logo" class="img-circle" src="https://avatars.githubusercontent.com/u/77429826?v=4">
         <p>FIROS</p>
     </div>
     <div class="section">
         <h1><span>About Me</span></h1>
         <p> Hey! I'm <strong>Firos </strong> from <strong>Bengaluru, India.</strong>. Currently studying
-            <strong>Computer Science Engineering</strong>. I Like <strong>Coding</strong> C++ is my love</p>
+            <strong>Computer Science Engineering</strong>. I Like <strong>Coding</strong> C++ is my love.
+            <strong>My Github is my Portfolio and Resume. Checkout my Github Below</strong>
+        </p>
         <p class="quote">~ Firos</p>
     </div>
     <div class="section" id="res">
@@ -81,10 +161,42 @@
     <center>Made with ❤️ By <a href="https://github.com/firoz3130">
             Firos
         </a></center>
-
+        
     <script type="text/javascript">
         function search() {
             window.open('https://www.google.com/search?output=search&q=' + document.getElementById("question").value)
+        }
+        function isBirthday() {
+            var today = new Date();
+            var birthday = new Date(today.getFullYear(), 8, 17); // September 18 (0-based month)
+            return today.toDateString() === birthday.toDateString();
+        }
+
+        // Function to create balloons and show birthday wish
+        function displayBirthday() {
+            var birthdayWish = document.getElementById("birthday-wish");
+
+    // Create balloons on the left side
+    var leftBalloons = document.createElement("div");
+    leftBalloons.className = "balloon";
+    leftBalloons.style.left = Math.random() * 60 + "vw"; // Random horizontal position on the left side
+    leftBalloons.style.bottom = "0";
+    leftBalloons.innerHTML = "🎈🎈🎈🎈";
+    document.body.appendChild(leftBalloons);
+
+    // Create balloons on the right side
+    var rightBalloons = document.createElement("div");
+    rightBalloons.className = "balloon";
+    rightBalloons.style.right = Math.random() * 35 + "vw"; // Random horizontal position on the right side
+    rightBalloons.style.bottom = "0";
+    rightBalloons.innerHTML = "🎈🎈🎈🎈";
+    document.body.appendChild(rightBalloons);
+
+    // Show the birthday wish
+    birthdayWish.style.display = "block";
+        }
+        if (isBirthday()) {
+            displayBirthday();
         }
     </script>
 </body>
